@@ -13,28 +13,30 @@ const setBackground = (color) => {
     Crafty.background(color)
 }
 
-const createWalls = () => {
+
+const createWalls = (color) => {
     let leftWall = Crafty.e(`Wall, 2D, Canvas, Color`)
     .attr({x: 0, y:0, w: pongNameSpace.windowHeight / 16, h: pongNameSpace.windowWidth })
-    .color(`pink`)
+    .color(color)
 
     let rightWall = Crafty.e(`Wall, 2D, Canvas, Color`)
     .attr({x: pongNameSpace.windowWidth - pongNameSpace.windowHeight / 16, y:0, w: pongNameSpace.windowHeight  / 16, h: pongNameSpace.windowWidth })
-    .color(`pink`)
+    .color(color)
 
     let topWall = Crafty.e(`Wall, 2D, Canvas, Color`)
     .attr({x: 0, y:0, w: pongNameSpace.windowWidth, h: pongNameSpace.windowHeight / 16 })
-    .color(`pink`)
+    .color(color)
 
     let bottomWall = Crafty.e(`Wall, 2D, Canvas, Color`)
     .attr({x: 0, y: pongNameSpace.windowHeight - pongNameSpace.windowHeight / 16, w: pongNameSpace.windowWidth, h: pongNameSpace.windowHeight / 2 })
-    .color(`pink`)
+    .color(color)
 }
 
-const createPlayerPaddle = () => {
-    let playerPaddle = Crafty.e(`2D, Canvas, Color, Keyboard, Gravity`)
-    .attr({x: pongNameSpace.windowWidth / 2, y: pongNameSpace.windowHeight - 100, w: pongNameSpace.windowWidth / 8, h: pongNameSpace.windowHeight / 32 })
-    .color(`purple`).gravity(`Wall`)
+
+const createPlayerPaddle = (color) => {
+    let playerPaddle = Crafty.e(`2D, Canvas, Color, Multiway, Collision`)
+    .attr({x: pongNameSpace.windowWidth / 2, y: pongNameSpace.windowHeight * 0.905, w: pongNameSpace.windowWidth / 8, h: pongNameSpace.windowHeight / 32 })
+    .color(color).multiway(pongNameSpace.windowWidth / 4, {RIGHT_ARROW: 0, LEFT_ARROW: 180})
 
 
 }
@@ -56,5 +58,5 @@ const createPlayerPaddle = () => {
 
 initializeGame(pongNameSpace.windowWidth, pongNameSpace.windowHeight)
 setBackground('black')
-createWalls()
-createPlayerPaddle()
+createWalls('pink')
+createPlayerPaddle(`purple`)

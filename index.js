@@ -67,7 +67,8 @@ const createBalls = (color, number) => {
                 y:pongNameSpace.windowHeight / 16, 
                 w: pongNameSpace.windowWidth / 32, 
                 h: pongNameSpace.windowHeight / 32 })
-            .color(color).gravity(`Bottomwall`)
+            .color(color)
+            .gravity(`Bottomwall`)
             )
 
     }

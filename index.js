@@ -29,12 +29,17 @@ const createWalls = () => {
     let bottomWall = Crafty.e(`Wall, 2D, Canvas, Color`)
     .attr({x: 0, y: pongNameSpace.windowHeight - pongNameSpace.windowHeight / 16, w: pongNameSpace.windowWidth, h: pongNameSpace.windowHeight / 2 })
     .color(`pink`)
+}
 
-
-
+const createPlayerPaddle = () => {
+    let playerPaddle = Crafty.e(`2D, Canvas, Color, Keyboard, Gravity`)
+    .attr({x: pongNameSpace.windowWidth / 2, y: pongNameSpace.windowHeight - 100, w: pongNameSpace.windowWidth / 8, h: pongNameSpace.windowHeight / 32 })
+    .color(`purple`).gravity(`Wall`)
 
 
 }
+
+
 
 
 
@@ -52,3 +57,4 @@ const createWalls = () => {
 initializeGame(pongNameSpace.windowWidth, pongNameSpace.windowHeight)
 setBackground('black')
 createWalls()
+createPlayerPaddle()

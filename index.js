@@ -5,8 +5,12 @@ let pongNameSpace = {         //Declare namespace to hold global variables for a
 }
 
 
-const initializeGame = () => {
-    Crafty.init(pongNameSpace.windowWidth, pongNameSpace.windowHeight, document.getElementById('game')) //init game
+const initializeGame = ( width, height) => {
+    Crafty.init(width, height, document.getElementById('game')) //init game
+}
+
+const setBackground = (color) => {
+    Crafty.background(color)
 }
 
 const createWalls = () => {
@@ -45,5 +49,6 @@ const createWalls = () => {
 
 // RUN GAME
 
-initializeGame()
+initializeGame(pongNameSpace.windowWidth, pongNameSpace.windowHeight)
+setBackground('black')
 createWalls()
